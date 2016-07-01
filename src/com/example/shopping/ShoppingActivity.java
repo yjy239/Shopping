@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
@@ -16,6 +17,7 @@ public class ShoppingActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceBundle){
 		super.onCreate(savedInstanceBundle);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.shopping_main);
 		
 		home = (ImageView)findViewById(R.id.home_page);
