@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
     
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/Title"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="this is Shopping_main"/>
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">"
+        
+        <ImageView
+            android:id="@+id/home_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/home_color"/>
+        
+        <ImageView
+            android:id="@+id/business"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/shop_grey"/>
+        
+        <ImageView
+            android:id="@+id/me"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/person_grey"/>
+        
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/more_grey"/>"
+        
+    </LinearLayout>
+    
+    
 
-</LinearLayout>
+</RelativeLayout>
