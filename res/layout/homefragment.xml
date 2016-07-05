@@ -6,7 +6,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
         
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,12 +31,19 @@
                 android:background="#7FFFD4"/>
         </LinearLayout>
         
-        <EditText
+       <!--<EditText
             android:id="@+id/findtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:hint="搜索商家或者商品"/>
+            android:hint="搜索商家或者商品"/>  --> 
+            
+            <com.example.shopping.MyEditText
+                android:id="@+id/findtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:hint="搜索商家或者商品"/>
         
         <ImageView
             android:id="@+id/xzing"

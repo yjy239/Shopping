@@ -15,8 +15,8 @@ public class ShoppingActivity extends Activity{
 	private ImageView more;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceBundle){
-		super.onCreate(savedInstanceBundle);
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.shopping_main);
 		
