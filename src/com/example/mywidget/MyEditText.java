@@ -1,7 +1,9 @@
-package com.example.shopping;
+package com.example.mywidget;
 
 import java.security.PublicKey;
 import java.text.AttributedCharacterIterator.Attribute;
+
+import com.example.shopping.FindShopActivity;
 
 import android.content.Context;
 import android.content.Intent;

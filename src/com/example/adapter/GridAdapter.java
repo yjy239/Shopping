@@ -8,6 +8,7 @@ import com.example.shopping.R;
 import android.R.integer;
 import android.R.raw;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GridAdapter extends BaseAdapter{
-	private LinkedList<String> txtlist;
-	private LinkedList<Integer> list;
+	private List<String> txtlist;
+	private List<Integer> list;
 	private Context mContext;
 	
-	public GridAdapter(LinkedList<String> txtlist,LinkedList<Integer> list,Context context){
+	public GridAdapter(List<String> txtlist,List<Integer> list,Context context){
 		super();
 		this.txtlist = txtlist;
 		this.list = list;
@@ -52,6 +53,7 @@ public class GridAdapter extends BaseAdapter{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
+		Log.e("positionlist", String.valueOf(position));
 		ViewHolder holder;
 		if(convertView == null){
 			holder = new ViewHolder();
