@@ -20,4 +20,9 @@ public class MyListView extends ListView{
 		super(context, attrs, defStyle);
 	}
 
+	
+	@Override
+	protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec){
+		
+	}
 }
