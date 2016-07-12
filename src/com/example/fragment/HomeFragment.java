@@ -13,6 +13,8 @@ import com.example.adapter.MyPageAdapter;
 import com.example.adapter.ShopListAdapter;
 import com.example.mode.Shop;
 import com.example.mywidget.MyEditText;
+import com.example.mywidget.MyListView;
+import com.example.mywidget.MyViewPager;
 import com.example.outofnet.getData;
 import com.example.shopping.R;
 import com.example.shopping.R.id;
@@ -57,7 +59,7 @@ public class HomeFragment extends Fragment{
 	private TextView buytext;
 	private getData getdata;
 	private Shop shop;
-	private ListView shoplist;
+	private MyListView shoplist;
 	private ImageView[] mimageview;
 	private ImageView[] tipview;
 	private int[] ImgIdArray;
@@ -83,7 +85,7 @@ public class HomeFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater,ViewGroup container,
 			Bundle savedInstanceState){
-		view = inflater.inflate(R.layout.homefragment, container);
+		view = inflater.inflate(R.layout.homefragment, container,false);
 		edittext = (MyEditText)view.findViewById(R.id.findtext);
 		citytext = (TextView)view.findViewById(R.id.cityname);
 		buytext = (TextView)view.findViewById(R.id.buytext);
@@ -92,7 +94,7 @@ public class HomeFragment extends Fragment{
 		bell = (ImageView)view.findViewById(R.id.message);
 		dotlayout = (LinearLayout)view.findViewById(R.id.dotlayout);
 		FShopView = (GridView)view.findViewById(R.id.FShopView);
-		shoplist = (ListView)view.findViewById(R.id.shoplist);
+		shoplist = (MyListView)view.findViewById(R.id.shoplist);
 		viewPager = (ViewPager)view.findViewById(R.id.viewpager);
 		getShop();
 		initGrid(getActivity());
@@ -132,7 +134,7 @@ public class HomeFragment extends Fragment{
 	}
 	
 	private void initGrid(Context context){
-		GridAdapter buyAdapter = new GridAdapter(Ramshopname, RamshopImgid, context);
+		GridAdapter buyAdapter = new GridAdapter(Ramshopname, RamshopImgid, context,0);
 		FShopView.setAdapter(buyAdapter);
 		FShopView.setNumColumns(3);
 	}
@@ -143,7 +145,7 @@ public class HomeFragment extends Fragment{
 			nameList.add(shop.getName());
 			imgList.add(shop.getImgId());
 		}
-		ShopListAdapter listAdapter = new ShopListAdapter(nameList, imgList,context);
+		ShopListAdapter listAdapter = new ShopListAdapter(nameList, imgList,context,0);
 		shoplist.setAdapter(listAdapter);
 	}
 	
@@ -153,7 +155,7 @@ public class HomeFragment extends Fragment{
 		Log.e("pagesize", String.valueOf(pagesize));
 		for(int i = 0;i < pagesize;i++){
 			views.add(getViewPagerItem(context, i, txtlist, list, column, row));
-			LayoutParams params = new LayoutParams(10,10);
+			LayoutParams params = new LayoutParams(20,20);
 			dotlayout.addView(dotitem(i,context),params);
 		}
 		MyPageAdapter pageAdapter = new MyPageAdapter(views);
@@ -185,7 +187,7 @@ public class HomeFragment extends Fragment{
 		for(String i : txtList){
 			Log.e("String", String.valueOf(i));
 		}
-		GridAdapter gAdapter = new GridAdapter(txtList, imgList, context);
+		GridAdapter gAdapter = new GridAdapter(txtList, imgList, context,0);
 		gridView.setAdapter(gAdapter);
 		gridView.setNumColumns(column);
 //		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

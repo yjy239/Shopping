@@ -12,6 +12,7 @@ public class Shop {
 	private int benefit;
 	private String cityname;
 	private String proname;
+	private String sort;
 	
 	public void setName(String name){
 		this.name = name;
@@ -75,6 +76,14 @@ public class Shop {
 	
 	public String getproName(){
 		return proname;
+	}
+	
+	public void setSort(String sort){
+		this.sort = sort;
+	}
+	
+	public String getSort(){
+		return sort;
 	}
 
 }

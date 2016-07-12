@@ -20,12 +20,14 @@ public class GridAdapter extends BaseAdapter{
 	private List<String> txtlist;
 	private List<Integer> list;
 	private Context mContext;
+	int id = 0;
 	
-	public GridAdapter(List<String> txtlist,List<Integer> list,Context context){
+	public GridAdapter(List<String> txtlist,List<Integer> list,Context context,int id){
 		super();
 		this.txtlist = txtlist;
 		this.list = list;
 		this.mContext = context;
+		this.id = id;
 	}
 	
 	public void clear(){
@@ -49,18 +51,36 @@ public class GridAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		return position;
 	}
+	
+	public int getId(){
+		return id;
+	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		Log.e("positionlist", String.valueOf(position));
+		//Log.e("positionlist", String.valueOf(position));
 		ViewHolder holder;
+		int Gid = getId();
 		if(convertView == null){
 			holder = new ViewHolder();
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.img_item, null);
-			holder.image = (ImageView) convertView.findViewById(R.id.img_item);
-			holder.text = (TextView) convertView.findViewById(R.id.txt_item);
-			convertView.setTag(holder);
+			switch (Gid) {
+			case 0:
+				convertView = LayoutInflater.from(mContext).inflate(R.layout.img_item, null);
+				holder.image = (ImageView) convertView.findViewById(R.id.img_item);
+				holder.text = (TextView) convertView.findViewById(R.id.txt_item);
+				convertView.setTag(holder);
+				break;
+				
+			case 1:
+				convertView = LayoutInflater.from(mContext).inflate(R.layout.grid_item, null);
+				holder.image = (ImageView) convertView.findViewById(R.id.mine_img);
+				holder.text = (TextView) convertView.findViewById(R.id.mine_text);
+				convertView.setTag(holder);
+			default:
+				break;
+			}
+			
 		}else{
 			holder = (ViewHolder) convertView.getTag();
 		}

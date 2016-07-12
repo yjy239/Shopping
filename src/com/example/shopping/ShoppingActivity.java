@@ -1,6 +1,16 @@
 package com.example.shopping;
 
+import java.util.ArrayList;
+
+import com.example.fragment.HomeFragment;
+import com.example.fragment.MineFragment;
+import com.example.fragment.ShopFragment;
+import com.example.shopping.R.layout;
+
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -13,6 +23,14 @@ public class ShoppingActivity extends Activity{
 	private ImageView shop;
 	private ImageView person;
 	private ImageView more;
+	private FragmentManager fragmentManager;
+	private HomeFragment homeFragment;
+	private ShopFragment shopFragment;
+	private MineFragment mineFragment;
+	private FragmentTransaction transaction;
+	private ArrayList<Fragment> fragList = new ArrayList<Fragment>();
+	private Fragment currentFragment;
+	private int currentIndex = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -28,44 +46,61 @@ public class ShoppingActivity extends Activity{
 		home.setOnClickListener(onClickListener);
 		shop.setOnClickListener(onClickListener);
 		person.setOnClickListener(onClickListener);
-		more.setOnClickListener(onClickListener);		
+		more.setOnClickListener(onClickListener);
+		
+		home.setTag(0);
+		shop.setTag(1);
+		person.setTag(2);
+		more.setTag(3);		
+		initFragment();
 		
 	}
+	
+	private void initFragment(){
+		fragList.add(new HomeFragment());
+		fragList.add(new ShopFragment());
+		fragList.add(new MineFragment());
+		home.setSelected(true);
+		changeFragment(0);
+	}
+	
+	private void changeFragment(int index){
+		currentIndex = index;
+		home.setSelected(index == 0);
+		shop.setSelected(index == 1);
+		person.setSelected(index == 2);
+		more.setSelected(index == 3);
+		
+		transaction = getFragmentManager().beginTransaction();
+		if(currentFragment != null){
+			transaction.hide(currentFragment);
+		}
+		
+		Fragment fragment = getFragmentManager().findFragmentByTag(fragList.get(index).getClass().getName());
+		
+		if(fragment == null){
+			fragment = fragList.get(index);
+		}
+		currentFragment = fragment;
+		
+		if(!fragment.isAdded()){
+			transaction.add(R.id.above,fragment,fragment.getClass().getName());
+		}else{
+			transaction.show(fragment);
+		}
+		transaction.commit();
+	}
+	
+	
 	
 	OnClickListener onClickListener = new OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
+		
 			// TODO Auto-generated method stub
-			switch(v.getId()){
-			case R.id.home_page:
-				home.setImageResource(R.drawable.home_color);
-				shop.setImageResource(R.drawable.shop_grey);
-				person.setImageResource(R.drawable.person_grey);
-				more.setImageResource(R.drawable.more_grey);
-				break;
-			case R.id.business:
-				home.setImageResource(R.drawable.home_grey);
-				shop.setImageResource(R.drawable.shop_color);
-				person.setImageResource(R.drawable.person_grey);
-				more.setImageResource(R.drawable.more_grey);
-				break;
-			case R.id.me:
-				home.setImageResource(R.drawable.home_grey);
-				shop.setImageResource(R.drawable.shop_grey);
-				person.setImageResource(R.drawable.person_color);
-				more.setImageResource(R.drawable.more_grey);
-				break;
-			case R.id.more:
-				home.setImageResource(R.drawable.home_grey);
-				shop.setImageResource(R.drawable.shop_grey);
-				person.setImageResource(R.drawable.person_grey);
-				more.setImageResource(R.drawable.more_color);
-				break;
-				
-				default:
-					;
-			}
+			changeFragment((Integer)v.getTag());
+			
 		}
 	};
 

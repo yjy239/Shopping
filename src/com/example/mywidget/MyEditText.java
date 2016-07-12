@@ -59,14 +59,5 @@ public class MyEditText extends EditText implements OnFocusChangeListener{
 		}
 	}
 	
-	@Override
-	protected void onDraw(Canvas canvas){
-		super.onDraw(canvas);
-//		Paint paint = new Paint();
-//		paint.setAntiAlias(true);
-//		paint.setColor(Color.BLACK);
-//		RectF rectf = new RectF();
-//		canvas.drawRoundRect(rectf, 30, 30, paint);
-	}
 	
 }
