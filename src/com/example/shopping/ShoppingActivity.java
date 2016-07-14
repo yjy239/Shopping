@@ -5,12 +5,18 @@ import java.util.ArrayList;
 import com.example.fragment.HomeFragment;
 import com.example.fragment.MineFragment;
 import com.example.fragment.ShopFragment;
+import com.example.network.ShopService;
 import com.example.shopping.R.layout;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ContentProvider;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -31,6 +37,7 @@ public class ShoppingActivity extends Activity{
 	private ArrayList<Fragment> fragList = new ArrayList<Fragment>();
 	private Fragment currentFragment;
 	private int currentIndex = 0;
+	private Intent service;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -53,7 +60,8 @@ public class ShoppingActivity extends Activity{
 		person.setTag(2);
 		more.setTag(3);		
 		initFragment();
-		
+		service = new Intent(ShoppingActivity.this,ShopService.class);
+		startService(service);
 	}
 	
 	private void initFragment(){
@@ -103,6 +111,14 @@ public class ShoppingActivity extends Activity{
 			
 		}
 	};
+	
+	@Override
+	protected void onDestroy(){
+		stopService(service);
+		super.onDestroy();
+	}
+	
+
 
 	
 }

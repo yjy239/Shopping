@@ -1,20 +1,31 @@
 package com.example.mode;
 
-public class Shelf {
-	private String name;
+import java.util.ArrayList;
+
+import android.R.integer;
+
+public class Shelf extends ArrayList<Product>{
+	private int id;
 	private String sort;
-	
-	private void setName(String name){
-		this.name = name;
+	public Shelf(int n,int id,String sort) {
+		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.sort = this.sort;
+		Achieve.fill(this, Product.achievement, n);
 	}
-	private String getName(){
-		return name;
+	
+	public void setid(int id){
+		this.id = id;
+	}
+	public int getid(){
+		return id;
 	}
 	
-	private void setsort(String sort){
+	public void setsort(String sort){
 		this.sort = sort;
 	}
-	private String getSort(){
+	
+	public String getsort(){
 		return sort;
 	}
 }

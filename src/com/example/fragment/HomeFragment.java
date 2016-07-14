@@ -23,7 +23,9 @@ import com.example.shopping.R.layout;
 import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.ContentValues;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -226,5 +228,7 @@ public class HomeFragment extends Fragment{
 		}
 		
 	}
+	
+
 	
 }

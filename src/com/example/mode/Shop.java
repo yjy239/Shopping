@@ -1,8 +1,15 @@
 package com.example.mode;
 
+import java.util.ArrayList;
+
+import com.example.db.MyDataBaseHelper;
+
+import android.R.integer;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.widget.ImageView;
 
-public class Shop {
+public class Shop extends ArrayList<Aisle>{
 	private String name;
 	private int Imgid;
 	private ImageView Imgview;
@@ -13,7 +20,26 @@ public class Shop {
 	private String cityname;
 	private String proname;
 	private String sort;
+	private MyDataBaseHelper dbHelper;
 	
+	public Shop(int nAisle,int nShelf,int nProduct){
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		for(int i = 0;i < nShelf;i++){
+			values.put("name", "shop" + i);
+			values.put("ImgId", String.valueOf(Imgid));
+			values.put("introduce", introduce);
+			values.put("vip", true);
+			values.put("cityname", "нч");
+			values.put("proname", "нч");
+			add(new Aisle(nShelf, nProduct));
+		}
+	}
+	
+	public Shop() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setName(String name){
 		this.name = name;
 	}
